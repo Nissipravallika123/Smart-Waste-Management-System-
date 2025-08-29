@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Waste Management System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #56CCF2, #2F80ED);
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: #27ae60;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      font-size: 26px;
+      color: #ffe082;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #f39c12;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #e67e22;
+    }
+
+    .impact {
+      background: #8e44ad;
+      padding: 30px;
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: #d35400;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #c0392b;
+    }
+
+    /* Popup Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      color: #000;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .close {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+      color: red;
+    }
+
+    /* Location Page */
+    #location-page {
+      display: none;
+      padding: 30px;
+      background: #34495e;
+    }
+
+    .user {
+      background: #1abc9c;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🚀 Smart Waste Management System: Clean City, Smart Future
+  </header>
+
+  <section>
+    <h2>🔎 Problem</h2>
+    <p>Urban areas face waste overflow, delayed pickups, and poor recycling. This leads to health and environmental hazards.</p>
+  </section>
+
+  <section>
+    <h2>💡 Solution</h2>
+    <p>IoT-based smart bins, AI-powered route optimization, and citizen apps for reporting & rewards.</p>
+  </section>
+
+  <section>
+    <h2>🔧 Key Features (Click for details)</h2>
+    <div class="features">
+      <div class="card" onclick="openModal('Smart Bins with IoT Sensors detect when bins are full.')">🗑 Smart Bins</div>
+      <div class="card" onclick="openModal('AI suggests optimized collection routes for trucks.')">🧠 AI Route Optimization</div>
+      <div class="card" onclick="openModal('AI identifies recyclables vs. non-recyclables.')">♻ Waste Classification</div>
+      <div class="card" onclick="openModal('Residents locate smart bins, report overflows, earn rewards.')">📱 Citizen App</div>
+      <div class="card" onclick="openModal('Dashboard shows waste levels & recycling rates.')">📊 Analytics Dashboard</div>
+    </div>
+  </section>
+
+  <section class="impact">
+    <h2>🌍 Impact</h2>
+    <p>✔ Reduced waste overflow & air pollution <br>
+       ✔ Encourages recycling & awareness <br>
+       ✔ Saves operational costs <br>
+       ✔ Supports Smart City vision</p>
+  </section>
+
+  <a class="btn" onclick="showLocationPage()">📍 View Location (India)</a>
+
+  <!-- Modal Popup -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <!-- Location Page -->
+  <section id="location-page">
+    <h2>📍 Waste Management Users in India</h2>
+    <div id="users"></div>
+  </section>
+
+  <script>
+    function openModal(text) {
+      document.getElementById("modal-text").innerText = text;
+      document.getElementById("myModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    function showLocationPage() {
+      document.getElementById("location-page").style.display = "block";
+      document.getElementById("users").innerHTML = "";
+
+      const randomUsers = [
+        {name: "Aarav Sharma", city: "Delhi"},
+        {name: "Priya Singh", city: "Mumbai"},
+        {name: "Rohan Das", city: "Kolkata"},
+        {name: "Meera Nair", city: "Chennai"},
+        {name: "Vikram Patel", city: "Ahmedabad"}
+      ];
+
+      randomUsers.forEach(user => {
+        let div = document.createElement("div");
+        div.classList.add("user");
+        div.innerHTML = `<strong>${user.name}</strong><br>📍 ${user.city}`;
+        document.getElementById("users").appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>
